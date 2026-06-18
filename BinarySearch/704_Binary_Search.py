@@ -1,18 +1,15 @@
-import math
 from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        first_index = 0
-        last_index = len(nums) - 1
-        mid_index = 0
-
-        while last_index >= first_index :
-            mid_index = math.floor((first_index + last_index )/2)
-            if target > nums[mid_index]:
-                first_index = mid_index + 1
-            elif target < nums[mid_index]:
-                last_index = mid_index - 1
+        low = 0
+        high = len(nums)
+        while low < high:
+            mid = (low + high)//2
+            if nums[mid] < target:
+                low = mid + 1
+            elif nums[mid] > target:
+                high = mid
             else:
-                return mid_index
+                return mid
         return -1

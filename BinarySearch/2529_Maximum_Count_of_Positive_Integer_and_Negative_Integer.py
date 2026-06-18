@@ -1,4 +1,3 @@
-import math
 from typing import List
 
 class Solution:
@@ -8,22 +7,22 @@ class Solution:
         last = n
 
         while last > first:
-            mid = math.floor((first + last) / 2)
+            mid = (first + last) // 2
             if nums[mid] < 0:
                 first = mid + 1
             else:
                 last = mid
         neg = first
 
-        first_ = 0
-        last_ = n
+        first = 0
+        last = n
 
-        while last_ > first_:
-            mid_ = math.floor((first_ + last_) / 2)
-            if nums[mid_] <= 0:
-                first_ = mid_ + 1
+        while last > first:
+            mid = (first + last) // 2
+            if nums[mid] <= 0:
+                first = mid + 1
             else:
-                last_ = mid_
-        pos = n - first_
+                last = mid
+        pos = n - first
 
         return max(pos, neg)
